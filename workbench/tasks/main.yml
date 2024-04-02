@@ -1,0 +1,21 @@
+---
+# Workbench Python Script for Parsing inputs
+- name: Workbench Python Script
+  tags:
+    - workbench
+  copy:
+    src: 'workbench.py'
+    dest: '/usr/bin/workbench'
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Workbench Launch Script
+  tags:
+    - workbench
+  copy:
+    src: 'workbench_launch.sh'
+    dest: '/usr/bin/workbench_launch.sh'
+    owner: root
+    group: root
+    mode: '0755'
