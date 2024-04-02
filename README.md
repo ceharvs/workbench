@@ -65,7 +65,7 @@ $ srun -t60 -c5 --mem=50GB --gpus=1 --pty $BASH
 
 `workbench` is two scripts that essentially runs the above command but with a few more options.  Overall, `workbench` is made up of about 250 lines of code and uses a Python script and a shell script to launch jobs. 
 
-![workbench cartoon diagram](files/workbench.png)
+![workbench cartoon diagram](workbench/files/workbench.png)
 
 Features
 --------
