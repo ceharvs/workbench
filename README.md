@@ -3,7 +3,7 @@ Workbench
 
 This files used in this repository cna be deployed as an Ansible role to installs the correct files for Workbench on HPC clusters.
 
-Workbench is a simple wrapper script that supports quick and easy GPU job deployments on HPC Clusters.
+`workbench` is a simple wrapper script that supports quick and easy GPU job deployments on HPC Clusters.
 
 Why Workbench
 -------------
