@@ -1,7 +1,7 @@
 Workbench
 =========
 
-This files used in this repository cna be deployed as an Ansible role to installs the correct files for Workbench on HPC clusters.
+This files used in this repository cna be deployed as an Ansible role to installs the correct files for `workbench` on HPC clusters running [Slurm](https://slurm.schedmd.com/overview.html).
 
 `workbench` is a simple wrapper script that supports quick and easy GPU job deployments on HPC Clusters.
 
