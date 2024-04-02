@@ -97,11 +97,12 @@ N/A
 
 Example Playbook
 ----------------
-
+```yaml
 - hosts: my_hosts
   gather_facts: true
   roles:
     - workbench
+```
 
 License
 -------
