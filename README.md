@@ -2,8 +2,8 @@ Workbench
 =========
 
 Approved for Public Release; Distribution Unlimited. 
-Public Release Case Number 22-0668.
-&copy 2024 The MITRE Corporation. ALL RIGHTS RESERVED.
+Public Release Case Number 22-0668. <br>
+&copy; 2024 The MITRE Corporation. ALL RIGHTS RESERVED.
 
 This files used in this repository cna be deployed as an Ansible role to installs the correct files for `workbench` on HPC clusters running [Slurm](https://slurm.schedmd.com/overview.html).
 
