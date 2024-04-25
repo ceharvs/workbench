@@ -12,15 +12,15 @@ This files used in this repository cna be deployed as an Ansible role to install
 Why Workbench
 -------------
 Users need to be able to ...
-*  :white_check_mark: ... launch a single large simulation
-* ... launch hundreds of simulaions
-* ... submit jobs and walk away
+* ... launch a single large simulation :white_check_mark: 
+* ... launch hundreds of simulaions :white_check_mark: 
+* ... submit jobs and walk away :white_check_mark: 
 
 They also need...
-* ... to debug
-* ... to launch interactive workloads
-* ... resources *now*
-* ... to not learn too many new things
+* ... to debug :white_check_mark: 
+* ... to launch interactive workloads :white_check_mark: 
+* ... resources *now* :white_check_mark: 
+* ... to not learn too many new things :x:
 
 Slurm is a great resource for all points but the last one.  New users to Slurm that haven't worked on traditional HPC clusters aren't looking to learn the complicated Slurm syntax to launch jobs interactively.
 
@@ -52,7 +52,7 @@ The above is what people want... but not really - new users (any users really) d
 * Too many options
 * Too long
 * Often users don't even know what this is looking for
-* Error prone with all the typing
+* Error prone with *so much* typing
 
 Why does workbench succeed?
 ---------------------------
@@ -71,6 +71,41 @@ $ srun -t60 -c5 --mem=50GB --gpus=1 --pty $BASH
 
 ![workbench cartoon diagram](workbench/files/workbench.png)
 
+```bash
+[user@login01 ~]$ workbench
+
+Please wait for your allocation to be created. You have requested:
+        -GPUs: 1
+        -CPUs: 5
+        -Memory: 50GB
+        -Time: 4 Hours
+
+Estimated Start Time: 2024-04-25T15:39:04
+If the job takes longer than 1-2 minutes to start, check cspan.mitre.org and
+squeue for resource availability. If utilization is at capacity, the
+interactive option may be unavailable.
+
+ __          __        _    _                     _
+ \ \        / /       | |  | |                   | |
+  \ \  /\  / /__  _ __| | _| |__   ___ _ __   ___| |__
+   \ \/  \/ / _ \| '__| |/ / '_ \ / _ \ '_ \ / __| '_ \
+    \  /\  / (_) | |  |   <| |_) |  __/ | | | (__| | | |
+     \/  \/ \___/|_|  |_|\_\_.__/ \___|_| |_|\___|_| |_|
+
+
+*****
+Welcome to the WORKBENCH!
+Your job is running on gpunode5
+You have 1 GPU(s) reserved:
+GPU 0: Tesla V100-SXM2-32GB (UUID: GPU-e0c399a2-2a6f-e687-b704-b0906db8fb71)
+*****
+Type 'exit' to leave the workbench.
+Present Working Directory: /home/user
+
+[user@gpunode5 ~]$ hostname
+gpunode5
+```
+
 Features
 --------
 * `--help` lets people see the most important options
@@ -83,6 +118,47 @@ Features
 * Jupyter Notebook with port forwarding instructions
 * Launch a singularity container
 * Show VS Code port forwarding instructions
+
+```bash
+[user@login01 ~]$ workbench --help
+usage: workbench [-h] [-g {0,1,2,3,4}] [-k {k80,m40,p100,v100,a100,a40}]
+                 [-c CPU_COUNT] [-t WALLCLOCK] [-m MEMORY] [-p PARTITION]
+                 [-A ACCOUNT] [--vs_debug] [--jupyter]
+                 [--jupyter_args JUPYTER_ARGS] [--container CONTAINER_NAME]
+                 [--bind BIND]
+
+Launch an interactive job via Slurm on the HPC cluster. In addition to the
+commands listed, any sbatch arguments will also work on the command line.
+Workbench will only launch jobs on a single node. For more information on
+sbatch commands: https://slurm.schedmd.com/sbatch.html
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g {0,1,2,3,4}, --gpus {0,1,2,3,4}
+                        Number of GPUs requested.
+  -k {k80,m40,p100,v100,a100,a40}, --kind {k80,m40,p100,v100,a100,a40}
+                        Type of GPU, use scontrol show nodes to review which
+                        gpu types are available.
+  -c CPU_COUNT, --cpus CPU_COUNT
+                        Number of CPUs.
+  -t WALLCLOCK, --time WALLCLOCK
+                        Expected reservation duration in hours.
+  -m MEMORY, --mem MEMORY
+                        Expected memory required for the job.
+  -p PARTITION, --partition PARTITION
+                        Partition to run the job on.
+  -A ACCOUNT, --account ACCOUNT
+                        Associated project for accounting.
+  --vs_debug            Launch an interactive VS Code Debug Session.
+  --jupyter             Launch a Jupyter Notebook instance.
+  --jupyter_args JUPYTER_ARGS
+                        Additional arguments for Jupyter. Provide in quotes.
+                        Do NOT include port or --no-browser.
+  --container CONTAINER_NAME
+                        Launch a specific singularity container. Provide the
+                        .simg file name.
+  --bind BIND           Input for singularity bind command.
+```
 
 Requirements
 ------------
