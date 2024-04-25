@@ -12,7 +12,7 @@ This files used in this repository cna be deployed as an Ansible role to install
 Why Workbench
 -------------
 Users need to be able to ...
-* ... launch a single large simulation
+*  :white_check_mark: ... launch a single large simulation
 * ... launch hundreds of simulaions
 * ... submit jobs and walk away
 
