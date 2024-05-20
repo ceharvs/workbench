@@ -44,8 +44,8 @@ def parser():
                 help="Number of CPUs.")
     parser.add_argument("-t", "--time", dest="wallclock",default=4, type=int,
                 help="Expected reservation duration in hours.")
-    parser.add_argument("-m", "--mem", dest="memory", default="50GB", type=str,
-                help="Expected memory required for the job.")
+    parser.add_argument("-m", "--mem", dest="memory", default="50G", type=str,
+                help="Expected memory required for the job. Specify units with K|M|G immediately after numerical value. Default is M.")
     parser.add_argument("-p", "--partition", dest="partition", default="batch,short_jobs", type=str,
                 help="Partition to run the job on.")
     parser.add_argument("-A", "--account", dest="account", default=None, type=str,
