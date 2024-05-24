@@ -71,7 +71,7 @@ VS_INSTRUCTIONS="
     Take the following additional steps. 
     1. From a separate terminal on your local machine, connect to
         the host with port forwarding
-        ${RED}ssh -2 -L $PORT:localhost:$PORT $(hostname -s)${NC}
+        ${RED}ssh -t -t $USER@$LOGIN -L $PORT:localhost:$PORT ssh $(hostname -s) -L $PORT:localhost:$PORT${NC}
     2. Run the python script from workbench terminal:
         ${RED}python -m debugpy --wait-for-client --listen $PORT <filename>.py${NC}
     3. Take the following VS Code Debug Config and run it to attach to the script:
@@ -82,10 +82,11 @@ VS_INSTRUCTIONS="
             'host': 'localhost',
             'port': $PORT,
             'pathMappings': [
-                            {
-                                'localRoot': '\${workspaceFolder}',
-                                'remoteRoot': '.'
-                            }
+                {
+                    'localRoot': '\${workspaceFolder}',
+                    'remoteRoot': '.'
+                }
+            ]
         }
 
 "
